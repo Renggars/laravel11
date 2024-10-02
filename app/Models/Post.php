@@ -2,46 +2,22 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Arr;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class Post
+class Post extends Model
 {
-    public static function all()
-    {
-        return [
-            [
-                'id' => 1,
-                'slug' => 'judul-artikel-1',
-                'title' => 'Judul Artikel 1',
-                'author' => 'Rengga',
-                'body' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores obcaecati rem
-                soluta animi architecto
-                ut, quaerat alias, quisquam consequatur, quibusdam quis nam debitis eum est voluptatibus molestias.
-                Inventore, omnis! In?'
-            ],
-            [
-                'id' => 2,
-                'slug' => 'judul-artikel-2',
-                'title' => 'Judul Artikel 2',
-                'author' => 'Rendi',
-                'body' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam nulla, dolorum aspernatur, temporibus dolor similique ipsam beatae praesentium veniam dolore suscipit obcaecati odit deserunt. Ipsum odio minima aspernatur optio minus.'
-            ]
-        ];
-    }
+    use HasFactory;
+    // Jika ingin ganti default nama table database, default sama dengan nama classnya (post)
+    // protected $table = 'blog_posts';
 
-    public static function find($slug): array
-    {
-        // $post = Arr::first(static::all(), function ($post) use ($slug) {
-        //     return $post['slug'] == $slug;
-        // });
+    // Jika ingin ganti primary key tambahkan code dibawah, dafaultnya menggunakan (id)
+    // protected $primaryKey = 'post_id';
 
-        // arrow function
-        $post =  Arr::first(static::all(), fn($post) => $post['slug'] == $slug);
+    protected $fillable = ['title', 'author', 'slug', 'body'];
+    // App\Models\Post::create([        'title' => 'Judul Artikel 2',        'author' => 'Rendi',        'slug' => 'judul-artikel-2',        'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ab distinctio rem a velit enim odio ipsam fuga ipsum doloremque inventore dolorum cumque itaque explicabo, non libero. Obcaecati, assumenda officiis!']);
 
-        if (!$post) {
-            abort(404);
-        }
+    // App\Models\Post::all(); 
 
-        return $post;
-    }
+    // $post =  App\Models\Post::all(); 
 }
