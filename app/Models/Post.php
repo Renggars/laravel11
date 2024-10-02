@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Post extends Model
 {
@@ -15,7 +16,18 @@ class Post extends Model
     // protected $primaryKey = 'post_id';
 
     protected $fillable = ['title', 'author', 'slug', 'body'];
-    // App\Models\Post::create([        'title' => 'Judul Artikel 2',        'author' => 'Rendi',        'slug' => 'judul-artikel-2',        'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ab distinctio rem a velit enim odio ipsam fuga ipsum doloremque inventore dolorum cumque itaque explicabo, non libero. Obcaecati, assumenda officiis!']);
+
+    public function author(): BelongsTo
+    {
+        return $this->BelongsTo(User::class);
+    }
+
+    // App\Models\Post::create([
+    // 'title' => 'Judul Artikel 2',
+    // 'author' => 'Rendi',
+    // 'slug' => 'judul-artikel-2',
+    // 'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ab distinctio rem a velit enim odio ipsam fuga ipsum doloremque inventore dolorum cumque itaque explicabo, non libero. Obcaecati, assumenda officiis!'
+    // ]);
 
     // App\Models\Post::all(); 
 
