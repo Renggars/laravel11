@@ -22,6 +22,12 @@ class Post extends Model
         return $this->BelongsTo(User::class);
     }
 
+
+    public function category(): BelongsTo
+    {
+        return $this->BelongsTo(Category::class);
+    }
+
     // App\Models\Post::create([
     // 'title' => 'Judul Artikel 2',
     // 'author' => 'Rendi',
