@@ -16,8 +16,7 @@ Route::get('/about', function () {
 
 Route::get('/posts', function () {
 
-
-    // eager loading (n + 1 problem)
+    // eager loading (n + 1 problem) manual, kalau default di providers
     // $posts = Post::with(['author', 'category'])->latest()->get();
     // $posts = Post::latest()->get();
 

@@ -50,7 +50,7 @@ class Post extends Model
             fn($query, $search) =>
             $query->where('title', 'like', '%' . $search . '%')
         );
-
+        // jika ada category maka juga dieksekusi jadi kesinambungan
         $query->when(
             ($filters['category']) ?? false,
             fn($query, $category) =>

@@ -4,6 +4,7 @@
     <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
         <div class="mx-auto max-w-screen-md sm:text-center">
             <form action="/posts" method="GET">
+                {{-- agar saat search di suatu page category tidak menghasilkan hasil dari category yang lain --}}
                 @if (request('category'))
                     <input type="hidden" name="category" value="{{ request('category') }}">
                 @endif
