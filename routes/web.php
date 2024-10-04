@@ -20,7 +20,8 @@ Route::get('/posts', function () {
     // $posts = Post::with(['author', 'category'])->latest()->get();
     // $posts = Post::latest()->get();
 
-    return view('posts', ['title' => "Blog", 'posts' => Post::filter(request(['search', 'category', 'author']))->latest()->get()]);
+    // jika ingin semua data tampil ganti pagination() dengan get(), sebaliknya jika ingin menggunakan pagination ganti get() dengan paginate() atau simplePagination()
+    return view('posts', ['title' => "Blog", 'posts' => Post::filter(request(['search', 'category', 'author']))->latest()->paginate(10)->withQueryString()]);
 });
 
 Route::get('/posts/{post:slug}', function (Post $post) {

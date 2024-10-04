@@ -38,8 +38,11 @@
         </div>
     </div>
 
-    <div class="py-4 px-4 mx-auto max-w-screen-xl lg:px-0">
-        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+    {{-- Displaying Pagination Results --}}
+    {{ $posts->links() }}
+
+    <div class="py-4 px-4 my-4 mx-auto max-w-screen-xl lg:px-0">
+        <div class="mb-2 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             @forelse ($posts as $post)
                 <article
                     class="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
@@ -91,7 +94,11 @@
                     <a href="/posts" class="block text-blue-500 hover:underline">&laquo; Back to all posts</a>
                 </div>
             @endforelse
-
         </div>
+
+        {{-- Displaying Pagination Results --}}
+        {{ $posts->links() }}
     </div>
+
+
 </x-layout>
